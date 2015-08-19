@@ -21,7 +21,14 @@ curl http://install.herokit.io | sh
 
 curl http://setup.herokit.io | sh
 ```
-    
+
+Adding the HeroKIT:core
+==============================
+
+To start a herokit project you need to add this package first.
+
+hero add herokit:core
+
 
 Die erste Herokit-App
 ====================
