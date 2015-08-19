@@ -36,12 +36,12 @@ function getFilesFromFolder(packageName, folder) {
 }
 
 Package.describe({
-    name: 'herokit-core',
+    name: 'herokit:core',
     version: '0.0.5',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
-    git: 'https://lkatzbach@bitbucket.org/lukaventure/herokit-core.git',
+    git: 'https://github.com/herokit/core.git',
     // By default, Meteor will default to using README.md for documentation.
     // To avoid submitting documentation, set this field to null.
     documentation: 'README.md'
@@ -110,18 +110,8 @@ Package.onUse(function (api) {
 
     api.add_files(HerokitLibFilesClient, "client");
 
-    /*
-    //wird im core nicht benötigt;
-    var collectionFiles = getFilesFromFolder("herokit-core", "collections");
-
-    api.add_files(collectionFiles, "server");
-    api.add_files(collectionFiles, "client");*/
-
     api.add_files(clientFiles, "client");
     api.add_files(cordovaFiles, "web.cordova");
-
-
-
 
     /* Export Section */
 
@@ -135,6 +125,6 @@ Package.onUse(function (api) {
 
 Package.onTest(function (api) {
     api.use('tinytest');
-    api.use('herokit');
+    api.use('herokit:core');
     api.addFiles('herokit-tests.js');
 });
