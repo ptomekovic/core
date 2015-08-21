@@ -10,21 +10,33 @@ angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$t
         if (typeof $scope.controllerConfig.models.primary.list.subscriptionoptions === 'undefined')
             $scope.controllerConfig.models.primary.list.subscriptionoptions={};
 
+        if (typeof $scope.controllerConfig.models.primary.list.doSubscribe === 'undefined') $scope.controllerConfig.models.primary.list.doSubscribe=true;
+
 
         if (typeof $scope.controllerConfig.models.primary.list.autosubscribe=== 'undefined' || $scope.controllerConfig.models.primary.list===true)
         {
 
-            $scope.$meteorSubscribe($scope.controllerConfig.models.primary.list.subscription,
-                $scope.controllerConfig.models.primary.list.subscriptionoptions)
-                .then(function(subscriptionHandle){
-                $scope.controllerConfig.models.primary.list.subscriptionHandle = subscriptionHandle;
+            if ($scope.controllerConfig.models.primary.list.doSubscribe)
+            {
+                $scope.$meteorSubscribe($scope.controllerConfig.models.primary.list.subscription,
+                    $scope.controllerConfig.models.primary.list.subscriptionoptions)
+                    .then(function(subscriptionHandle){
+                    $scope.controllerConfig.models.primary.list.subscriptionHandle = subscriptionHandle;
 
+                    $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
+                        return $scope.controllerConfig.models.primary.collection.find({});
+                      });
+
+                    if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
+                });
+            }
+            else {
                 $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
                     return $scope.controllerConfig.models.primary.collection.find({});
                   });
 
                 if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
-            });
+            }
         }
 
         $scope.remove = function (item, name, event) {
