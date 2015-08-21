@@ -29,6 +29,25 @@ To start a herokit project you need to add this package first.
 
 hero add herokit:core
 
+Getting Started
+==============================
+
+There two repos which you should get and check them out:
+
+Herokit FAQ Demo:
+https://github.com/herokit/herokit-faq-demo
+
+This is a simple App with Material Design and a full interface for FAQs.
+
+Herokit ToDo App - fullflavored:
+https://github.com/herokit/herokit-todoapp-demo-full
+
+This is the TodoMVC app made with Herokit - but full flavored.
+That means with a business logic layer etc.
+Complex projects will have a structure more like this.
+
+If you don't know the used librarys (see below), you should check their documentation to understand the demo apps.
+
 
 Die erste Herokit-App
 ====================
