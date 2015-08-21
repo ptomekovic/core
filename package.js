@@ -52,7 +52,7 @@ Package.onUse(function (api) {
 
     api.versionsFrom('1.1.0.2');
     api.use('meteor-platform');
-    api.use('urigo:angular@0.9.2');
+    api.use('urigo:angular@0.9.3');
     api.use('angular:angular@1.4.2');
     api.use('angular:angular-animate@1.4.2');
     api.use('mquandalle:bower@1.4.1');
