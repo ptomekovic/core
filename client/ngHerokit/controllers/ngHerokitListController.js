@@ -11,6 +11,7 @@ angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$t
             $scope.controllerConfig.models.primary.list.subscriptionoptions={};
 
         if (typeof $scope.controllerConfig.models.primary.list.doSubscribe === 'undefined') $scope.controllerConfig.models.primary.list.doSubscribe=true;
+        if (typeof $scope.controllerConfig.models.primary.list.auto === 'undefined') $scope.controllerConfig.models.primary.list.auto=true;
 
 
         if (typeof $scope.controllerConfig.models.primary.list.autosubscribe=== 'undefined' || $scope.controllerConfig.models.primary.list===true)
@@ -25,7 +26,7 @@ angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$t
 
                     $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
                         return $scope.controllerConfig.models.primary.collection.find({});
-                      });
+                      }, $scope.controllerConfig.models.primary.list.auto);
 
                     if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
                 });
@@ -33,7 +34,7 @@ angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$t
             else {
                 $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
                     return $scope.controllerConfig.models.primary.collection.find({});
-                  });
+                  }, $scope.controllerConfig.models.primary.list.auto);
 
                 if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
             }

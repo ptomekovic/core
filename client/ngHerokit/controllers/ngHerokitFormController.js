@@ -8,6 +8,7 @@ angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$s
         var itemConfig = $scope.controllerConfig.models.primary.item;
         var statesConfig = $scope.controllerConfig.states;
         if (typeof itemConfig.doSubscribe === 'undefined') itemConfig.doSubscribe=true;
+        if (typeof itemConfig.auto === 'undefined') itemConfig.auto=true;
 
         $scope[itemConfig.scopevar] = itemConfig.defaultobject;
 
@@ -35,8 +36,8 @@ angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$s
 
                  $scope.$meteorSubscribe(itemConfig.subscription, itemConfig.subscriptionoptions).then(function(subscriptionHandle){
                     itemConfig.subscriptionHandle=subscriptionHandle;
-                    $scope[itemConfig.scopevar] = $scope.$meteorObject(itemCollection,  {_id: $stateParams[itemConfig.stateParamId]});
-console.log($scope[itemConfig.scopevar]);
+                    $scope[itemConfig.scopevar] = $scope.$meteorObject(itemCollection,  {_id: $stateParams[itemConfig.stateParamId]}, auto);
+
                     if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
 
                 });
