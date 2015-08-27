@@ -1,6 +1,6 @@
 {
   "name": "herokit-core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "dependencies": {
     "angular-sanitize": "*",
     "angular-ui-router": "^0.2.15",
@@ -9,8 +9,8 @@
   },
   "private": true,
   "resolutions": {
-    "angular": "1.4.2",
-    "angular-animate": "1.4.2"
+    "angular": "1.4.4",
+    "angular-animate": "1.4.4"
   },
     "ignoredDependencies": [
     "angular",
