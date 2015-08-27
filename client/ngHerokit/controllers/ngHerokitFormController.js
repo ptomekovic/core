@@ -36,7 +36,7 @@ angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$s
 
                  $scope.$meteorSubscribe(itemConfig.subscription, itemConfig.subscriptionoptions).then(function(subscriptionHandle){
                     itemConfig.subscriptionHandle=subscriptionHandle;
-                    $scope[itemConfig.scopevar] = $scope.$meteorObject(itemCollection,  {_id: $stateParams[itemConfig.stateParamId]}, auto);
+                    $scope[itemConfig.scopevar] = $scope.$meteorObject(itemCollection,  {_id: $stateParams[itemConfig.stateParamId]}, itemConfig.auto);
 
                     if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
 
@@ -47,10 +47,10 @@ angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$s
                 $scope[itemConfig.scopevar] = $scope.$meteorObject(itemCollection, $stateParams[itemConfig.stateParamId]);
                 if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();
             }    //call a callback when subscription is ready if defined
-            HeroPage.setTitle(statesConfig.edit.pagetitle);
+            if (typeof statesConfig.edit.pagetitle!=='undefined') HeroPage.setTitle(statesConfig.edit.pagetitle);
         } else {
             $scope[itemConfig.stateParamId] = false;
-            HeroPage.setTitle(statesConfig.new.pagetitle);
+            if (typeof statesConfig.new.pagetitle!=='undefined') HeroPage.setTitle(statesConfig.new.pagetitle);
         }
 
         $scope.saveItem = function (item, aftersaveCallback) {

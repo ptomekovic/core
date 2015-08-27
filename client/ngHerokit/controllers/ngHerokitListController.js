@@ -6,29 +6,33 @@ angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$t
             $scope.controllerConfig = $Herokit.getDefaultControllerConfig();
 
         HeroPage.setTitle($scope.controllerConfig.states.list.pagetitle);
-
+console.log($scope.controllerConfig.models.primary.list.subscriptionoptions);
         if (typeof $scope.controllerConfig.models.primary.list.subscriptionoptions === 'undefined')
             $scope.controllerConfig.models.primary.list.subscriptionoptions={};
 
         if (typeof $scope.controllerConfig.models.primary.list.doSubscribe === 'undefined') $scope.controllerConfig.models.primary.list.doSubscribe=true;
         if (typeof $scope.controllerConfig.models.primary.list.auto === 'undefined') $scope.controllerConfig.models.primary.list.auto=true;
 
+        $scope.afterSub=function(subscriptionHandle){
+            $scope.controllerConfig.models.primary.list.subscriptionHandle = subscriptionHandle;
+
+            $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
+                return $scope.controllerConfig.models.primary.collection.find({});
+            }, $scope.controllerConfig.models.primary.list.auto);
+
+            if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
+        };
 
         if (typeof $scope.controllerConfig.models.primary.list.autosubscribe=== 'undefined' || $scope.controllerConfig.models.primary.list===true)
         {
 
             if ($scope.controllerConfig.models.primary.list.doSubscribe)
             {
-                $scope.$meteorSubscribe($scope.controllerConfig.models.primary.list.subscription,
-                    $scope.controllerConfig.models.primary.list.subscriptionoptions)
-                    .then(function(subscriptionHandle){
-                    $scope.controllerConfig.models.primary.list.subscriptionHandle = subscriptionHandle;
 
-                    $scope[$scope.controllerConfig.models.primary.list.scopevar] = $meteor.collection(function(){
-                        return $scope.controllerConfig.models.primary.collection.find({});
-                      }, $scope.controllerConfig.models.primary.list.auto);
-
-                    if (typeof $scope.dataReadyCallback !== 'undefined') $scope.dataReadyCallback();    //call a callback when subscription is ready if defined
+                $meteor.autorun($scope, function() {
+                    $scope.$meteorSubscribe($scope.controllerConfig.models.primary.list.subscription,
+                        $scope.getReactively('controllerConfig.models.primary.list.subscriptionoptions', true))
+                        .then($scope.afterSub);
                 });
             }
             else {
