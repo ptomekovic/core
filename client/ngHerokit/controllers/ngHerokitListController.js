@@ -1,12 +1,12 @@
-angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$timeout', '$log', 'HeroPage', '$Herokit', '$meteor',
-    function ($scope, $timeout, $log, HeroPage, $Herokit, $meteor) {
+angular.module("ngHerokit").controller("ngHerokitListController", ['$scope', '$timeout', '$log', 'HeroPage', '$Herokit', '$meteor', '$mdDialog',
+    function ($scope, $timeout, $log, HeroPage, $Herokit, $meteor, $mdDialog) {
         'use strict';
 
         if (typeof $scope.controllerConfig == 'undefined')
             $scope.controllerConfig = $Herokit.getDefaultControllerConfig();
 
         HeroPage.setTitle($scope.controllerConfig.states.list.pagetitle);
-console.log($scope.controllerConfig.models.primary.list.subscriptionoptions);
+
         if (typeof $scope.controllerConfig.models.primary.list.subscriptionoptions === 'undefined')
             $scope.controllerConfig.models.primary.list.subscriptionoptions={};
 
