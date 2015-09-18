@@ -37,7 +37,7 @@ function getFilesFromFolder(packageName, folder) {
 
 Package.describe({
     name: 'herokit:core',
-    version: '0.0.10',
+    version: '0.0.11',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
@@ -52,13 +52,12 @@ Package.onUse(function (api) {
 
     api.versionsFrom('1.1.0.2');
     api.use('meteor-platform');
-    api.use('urigo:angular@0.9.3');
-    api.use('angular:angular@1.4.2');
-    api.use('angular:angular-animate@1.4.2');
-    api.use('mquandalle:bower@1.4.1');
-    api.use('aldeed:collection2@2.3.3');
-    api.use('iron:router@1.0.7');
-
+    api.use('urigo:angular@0.10.2');
+    api.use('angular:angular@1.4.6');
+    api.use('angular:angular-animate@1.4.6');
+    api.use('mquandalle:bower@1.4.1_3');
+    api.use('aldeed:collection2@2.5.0');
+    api.use('iron:router@1.0.9');
 
     Cordova.depends({
         'org.apache.cordova.network-information': '0.2.15'
