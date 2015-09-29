@@ -37,7 +37,7 @@ function getFilesFromFolder(packageName, folder) {
 
 Package.describe({
     name: 'herokit:core',
-    version: '0.1.0',
+    version: '0.1.1',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
@@ -76,6 +76,7 @@ Package.onUse(function (api) {
         'lib/Herokit/Router/Herokit.Router.OnBeforeRule.js',
         'lib/Herokit/Router/Herokit.Router.IronRouter.js',
         'lib/Herokit/Router/Herokit.Router.UiRouter.js',
+        'lib/Herokit/Models/Herokit.Models.instances.js',
         'lib/Herokit/Data/Herokit.Schemas.js',
         'lib/Herokit/Init/Herokit.Init.js',
         'lib/Herokit/Init/Herokit.Init.App.js', //here is the real app initialization
