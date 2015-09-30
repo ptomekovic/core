@@ -37,7 +37,7 @@ function getFilesFromFolder(packageName, folder) {
 
 Package.describe({
     name: 'herokit:core',
-    version: '0.2.0',
+    version: '0.2.2',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
@@ -50,12 +50,12 @@ Package.describe({
 Package.onUse(function (api) {
     var both = ['client', 'server'];
 
-    api.versionsFrom('1.1.0.2');
+    api.versionsFrom('1.2.0.2');      //set which meteor version is required
     api.use('meteor-platform');
     api.use('angular@1.0.1');
     api.use('angular:angular@1.4.6');
     api.use('angular:angular-animate@1.4.6');
-    api.use('mquandalle:bower@=1.4.1_3');
+    api.use('mquandalle:bower@1.5.2');
     api.use('aldeed:collection2@2.5.0');
     api.use('iron:router@1.0.9');
 
@@ -104,15 +104,15 @@ Package.onUse(function (api) {
       var cordovaFiles = [
           'lib/Herokit/Environment/Herokit.Env.connection.cordova.js'];
 
-    //api.add_files(['lib/bower/.bowerrc'], 'server');
-    api.add_files(['lib/bower/bower.json'], both);
+    api.addAssets(['lib/bower/.bowerrc'], 'server');
+    api.addFiles(['lib/bower/bower.json'], both);
 
-    api.add_files(HerokitLibFilesBoth, both);
+    api.addFiles(HerokitLibFilesBoth, both);
 
-    api.add_files(HerokitLibFilesClient, "client");
+    api.addFiles(HerokitLibFilesClient, "client");
 
-    api.add_files(clientFiles, "client");
-    api.add_files(cordovaFiles, "web.cordova");
+    api.addFiles(clientFiles, "client");
+    api.addFiles(cordovaFiles, "web.cordova");
 
     /* Export Section */
 
