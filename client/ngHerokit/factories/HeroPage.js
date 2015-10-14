@@ -21,7 +21,7 @@ Inject Page and Call 'Page.setTitle()' from controllers.
 Here is the concrete example: http://plnkr.co/edit/0e7T6l
 */
 angular.module("ngHerokit").factory('HeroPage', function () {
-    var title = 'Default HeroKIT App Title';
+    var title = Herokit.Config.APPCONFIG.DefaultAppTitle;
     return {
         title: function () {
             return title;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module("ngHerokit").factory('$Herokit', ["$commangular",function ($commangular) {
-    var title = 'Default HeroKIT App Title';
+    var title = Herokit.Config.APPCONFIG.DefaultAppTitle;
     var defaultControllerConfig = {
         models: {
             primary: {
@@ -37,7 +37,7 @@ angular.module("ngHerokit").factory('$Herokit', ["$commangular",function ($comma
 
     return {
         title: function () {
-            return title;
+            return Herokit.Config.APPCONFIG.DefaultAppTitle;
         },
         setTitle: function (newTitle) {
             title = newTitle

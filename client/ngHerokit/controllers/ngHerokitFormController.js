@@ -1,5 +1,5 @@
-angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$stateParams', '$controller', '$meteorCollection', '$meteorObject', 'HeroPage', 'APPCONFIG', '$mdToast', '$rootScope', '$meteorSubscribe', '$Herokit', '$meteor', '$mdDialog', '$state',
-    function ($scope, $stateParams, $controller, $meteorCollection, $meteorObject, HeroPage, APPCONFIG,  $mdToast,  $rootScope, $meteorSubscribe, $Herokit, $meteor, $mdDialog, $state) {
+angular.module("ngHerokit").controller("ngHerokitFormController", ['$scope', '$stateParams', '$controller', 'HeroPage', 'APPCONFIG', '$mdToast', '$rootScope',  '$Herokit', '$meteor', '$mdDialog', '$state',
+    function ($scope, $stateParams, $controller, HeroPage, APPCONFIG,  $mdToast,  $rootScope, $Herokit, $meteor, $mdDialog, $state) {
         'use strict';
 
         $scope.controllerConfig = $Herokit.getDefaultControllerConfig();
