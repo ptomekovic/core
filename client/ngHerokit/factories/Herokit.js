@@ -43,15 +43,7 @@ angular.module("ngHerokit").factory('$Herokit', ["$commangular",function ($comma
             title = newTitle
         },
         getDefaultControllerConfig: function () {
-            return defaultControllerConfig;
-        },
-        NgMeteorClone: function (obj) {
-            if (null == obj || "object" != typeof obj) return obj;
-            var copy = obj.constructor();
-            for (var attr in obj) {
-                if (obj.hasOwnProperty(attr) && !attr.match(/\$/g) && typeof obj.attr != 'function') copy[attr] = obj[attr];
-            }
-            return copy;
+            return EJSON.clone(defaultControllerConfig);
         }
     };
 }]);
