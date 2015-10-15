@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("ngHerokit").factory('$Herokit', ["$commangular",function ($commangular) {
+angular.module("ngHerokit").factory('$Herokit', ["$commangular", function ($commangular) {
     var title = Herokit.Config.APPCONFIG.DefaultAppTitle;
     var defaultControllerConfig = {
         models: {
@@ -44,6 +44,14 @@ angular.module("ngHerokit").factory('$Herokit', ["$commangular",function ($comma
         },
         getDefaultControllerConfig: function () {
             return EJSON.clone(defaultControllerConfig);
+        },
+        isPromise: function (deferred) {
+            return (typeof deferred !== 'undefined' &&
+            angular.isObject(deferred) &&
+            angular.isObject(deferred.$$state) &&
+            deferred.then instanceof Function &&
+            deferred["catch"] instanceof Function &&
+            deferred["finally"] instanceof Function);
         }
     };
 }]);
