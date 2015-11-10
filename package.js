@@ -37,7 +37,7 @@ function getFilesFromFolder(packageName, folder) {
 
 Package.describe({
     name: 'herokit:core',
-    version: '0.2.8',
+    version: '0.3.0',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
@@ -52,7 +52,7 @@ Package.onUse(function (api) {
 
     api.versionsFrom('1.2.1');      //set which meteor version is required
     api.use('meteor-platform');
-    api.use('angular@=1.0.7');
+    api.use('angular@1.2.0');
     api.use('angular:angular@1.4.7');
     api.use('angular:angular-animate@1.4.7');
     api.use('mquandalle:bower@1.5.2_1');
