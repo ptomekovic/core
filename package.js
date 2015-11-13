@@ -70,7 +70,7 @@ Package.onUse(function (api) {
     api.use('mobile-status-bar');
     api.use('deps');
     api.use('livedata');
-    api.use('meteor-base');
+    //api.use('meteor-base');
 
     api.use('angular-with-blaze@1.2.1');
     api.use('angular:angular@1.4.7');
