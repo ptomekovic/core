@@ -37,7 +37,7 @@ function getFilesFromFolder(packageName, folder) {
 
 Package.describe({
     name: 'herokit:core',
-    version: '0.3.0-rc1',
+    version: '0.3.0',
     // Brief, one-line summary of the package.
     summary: 'The Framework for heroes with the best of meteor and angular',
     // URL to the Git repository containing the source code for this package.
@@ -51,8 +51,28 @@ Package.onUse(function (api) {
     var both = ['client', 'server'];
 
     api.versionsFrom('1.2.1');      //set which meteor version is required
-    api.use('meteor-platform');
-    api.use('angular@1.2.0');
+    api.use('mongo');
+    api.use('tracker');
+    api.use('jquery');
+    api.use('session');
+    api.use('check');
+    api.use('ejson');
+    api.use('reload');
+    api.use('logging');
+    api.use('underscore');
+    api.use('fastclick');
+    api.use('webapp');
+    api.use('meteor');
+    api.use('launch-screen');
+    api.use('autoupdate');
+    api.use('ddp');
+    api.use('ui');
+    api.use('mobile-status-bar');
+    api.use('deps');
+    api.use('livedata');
+    api.use('meteor-base');
+
+    api.use('angular-with-blaze@1.2.1');
     api.use('angular:angular@1.4.7');
     api.use('angular:angular-animate@1.4.7');
     api.use('mquandalle:bower@1.5.2_1');
